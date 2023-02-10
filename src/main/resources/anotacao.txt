@@ -1,0 +1,7 @@
+##Colocar na classe da entidade
+	@JsonRootName("gastronomia")  // para retorno em xml altera o root element.
+	@JasonIgnore // ignora o atributo no json
+	@JasonProperty("titulo") // altera o valor do atributo no json
+	
+	
+
