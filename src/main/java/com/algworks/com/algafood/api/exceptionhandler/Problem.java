@@ -3,6 +3,8 @@ package com.algworks.com.algafood.api.exceptionhandler;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import java.time.LocalDateTime;
+
 @JsonInclude(Include.NON_NULL)
 public class Problem {
 
@@ -10,12 +12,17 @@ public class Problem {
     private String type;
     private String title;
     private String detail;
+    private String userMessage;
+    private LocalDateTime timestamp;
 
-    Problem(Integer status, String type, String title, String detail) {
+
+    public Problem(Integer status, String type, String title, String detail, String userMessage, LocalDateTime timestamp) {
         this.status = status;
         this.type = type;
         this.title = title;
         this.detail = detail;
+        this.userMessage = userMessage;
+        this.timestamp = timestamp;
     }
 
 
@@ -35,6 +42,14 @@ public class Problem {
         return detail;
     }
 
+    public String getUserMessage(){
+        return userMessage;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
     @Override
     public String toString() {
         return "Problem{" +
@@ -42,6 +57,8 @@ public class Problem {
                 ", type='" + type + '\'' +
                 ", title='" + title + '\'' +
                 ", detail='" + detail + '\'' +
+                ", userMessage='" + userMessage + '\'' +
+                ", timestamp=" + timestamp +
                 '}';
     }
 
@@ -51,6 +68,9 @@ public class Problem {
         private String type;
         private String title;
         private String detail;
+        private String userMessage;
+        private LocalDateTime timestamp;
+
         private Problem problem;
 
         public static ProblemBuilder builder(){
@@ -77,13 +97,23 @@ public class Problem {
             return this;
         }
 
+        public ProblemBuilder userMessage(String userMessage) {
+            this.userMessage = userMessage;
+            return this;
+        }
+
+        public ProblemBuilder timestamp(LocalDateTime timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
         public ProblemBuilder problem(Problem problem) {
             this.problem = problem;
             return this;
         }
 
         public Problem build(){
-            return new Problem(status, type, title, detail);
+            return new Problem(status, type, title, detail, userMessage, timestamp);
         }
     }
 }
