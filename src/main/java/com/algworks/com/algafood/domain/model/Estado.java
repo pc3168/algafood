@@ -1,6 +1,10 @@
 package com.algworks.com.algafood.domain.model;
 
+import com.algworks.com.algafood.Groups;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -8,8 +12,10 @@ import java.util.Objects;
 public class Estado {
 
     @Id
+    @NotNull(groups = Groups.EstadoId.class)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String nome;
 
     public Long getId() {

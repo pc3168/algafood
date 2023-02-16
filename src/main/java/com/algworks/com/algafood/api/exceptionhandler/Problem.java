@@ -4,25 +4,28 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @JsonInclude(Include.NON_NULL)
 public class Problem {
 
     private Integer status;
+    private LocalDateTime timestamp;
     private String type;
     private String title;
     private String detail;
     private String userMessage;
-    private LocalDateTime timestamp;
+    private List<Field> fields;
 
 
-    public Problem(Integer status, String type, String title, String detail, String userMessage, LocalDateTime timestamp) {
+    public Problem(Integer status, LocalDateTime timestamp, String type, String title, String detail, String userMessage, List<Field> fields) {
         this.status = status;
+        this.timestamp = timestamp;
         this.type = type;
         this.title = title;
         this.detail = detail;
         this.userMessage = userMessage;
-        this.timestamp = timestamp;
+        this.fields = fields;
     }
 
 
@@ -50,26 +53,33 @@ public class Problem {
         return timestamp;
     }
 
+    public List<Field> getFields() {
+        return fields;
+    }
+
     @Override
     public String toString() {
         return "Problem{" +
                 "status=" + status +
+                ", timestamp=" + timestamp +
                 ", type='" + type + '\'' +
                 ", title='" + title + '\'' +
                 ", detail='" + detail + '\'' +
                 ", userMessage='" + userMessage + '\'' +
-                ", timestamp=" + timestamp +
+                ", fields=" + fields +
                 '}';
     }
 
     static class ProblemBuilder{
 
         private Integer status;
+        private LocalDateTime timestamp;
         private String type;
         private String title;
         private String detail;
         private String userMessage;
-        private LocalDateTime timestamp;
+        private List<Field> fields;
+
 
         private Problem problem;
 
@@ -107,13 +117,18 @@ public class Problem {
             return this;
         }
 
+        public ProblemBuilder fields(List<Field> fields) {
+            this.fields = fields;
+            return this;
+        }
+
         public ProblemBuilder problem(Problem problem) {
             this.problem = problem;
             return this;
         }
 
         public Problem build(){
-            return new Problem(status, type, title, detail, userMessage, timestamp);
+            return new Problem(status, timestamp, type, title, detail, userMessage, fields);
         }
     }
 }

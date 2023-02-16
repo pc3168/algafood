@@ -1,11 +1,18 @@
 package com.algworks.com.algafood.domain.model;
 
+import com.algworks.com.algafood.Groups;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.groups.ConvertGroup;
+import javax.validation.groups.Default;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,12 +27,18 @@ public class Restaurante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome", length = 30)
+    @NotBlank
+    @Column(name = "nome", length = 30, nullable = false)
     private String nome;
 
+    @PositiveOrZero
+//    @DecimalMin("0")
     @Column(name = "taxa_frete", nullable = false)
     private BigDecimal taxaFrete;
 
+    @Valid
+    @ConvertGroup(from = Default.class, to = Groups.CozinhaId.class)
+    @NotNull
     @JsonIgnoreProperties("hibernateLazyInitializer")
     //@JsonIgnoreProperties({"hibernateLazyInitializer","algumacoisa"})
     @ManyToOne(fetch = FetchType.LAZY)
