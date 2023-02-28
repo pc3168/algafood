@@ -1,4 +1,4 @@
-package com.algworks.com.algafood;
+package com.algworks.com.algafood.core.validation;
 
 public interface Groups{
     public interface CozinhaId {}

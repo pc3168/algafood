@@ -1,6 +1,6 @@
 package com.algworks.com.algafood.domain.model;
 
-import com.algworks.com.algafood.Groups;
+import com.algworks.com.algafood.core.validation.Groups;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
@@ -31,6 +31,7 @@ public class Restaurante {
     @Column(name = "nome", length = 30, nullable = false)
     private String nome;
 
+    @NotNull
     @PositiveOrZero
 //    @DecimalMin("0")
     @Column(name = "taxa_frete", nullable = false)

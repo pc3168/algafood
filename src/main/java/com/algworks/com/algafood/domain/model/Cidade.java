@@ -1,6 +1,6 @@
 package com.algworks.com.algafood.domain.model;
 
-import com.algworks.com.algafood.Groups;
+import com.algworks.com.algafood.core.validation.Groups;
 
 import javax.persistence.*;
 import javax.validation.Valid;

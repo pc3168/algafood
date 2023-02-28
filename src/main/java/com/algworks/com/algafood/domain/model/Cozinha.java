@@ -1,6 +1,6 @@
 package com.algworks.com.algafood.domain.model;
 
-import com.algworks.com.algafood.Groups;
+import com.algworks.com.algafood.core.validation.Groups;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
