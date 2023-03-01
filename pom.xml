@@ -59,10 +59,12 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency> -->
+		<!--
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+			</dependency>
+		-->
 	</dependencies>
 
 	<build>
@@ -70,6 +72,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- plugin para não rodar os testes
+				quando criar um build ...
+				colocar um padrão na classe com sufixo IT
+				ex: nomeDaClasseIT
+			-->
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
