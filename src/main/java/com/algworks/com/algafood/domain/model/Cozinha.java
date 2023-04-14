@@ -1,7 +1,6 @@
 package com.algworks.com.algafood.domain.model;
 
 import com.algworks.com.algafood.core.validation.Groups;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -22,7 +21,6 @@ public class Cozinha {
     //@Column(name = "name")
     private String nome;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "cozinha")
     private List<Restaurante> restaurantes = new ArrayList<>();
 

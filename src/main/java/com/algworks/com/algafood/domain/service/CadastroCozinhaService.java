@@ -9,6 +9,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class CadastroCozinhaService {
     public static final String MSG_COZINHA_EM_USO = "Cozinha de código %d não pode ser removida, pois está em uso";
@@ -16,6 +18,7 @@ public class CadastroCozinhaService {
     private CozinhaRepository cozinhaRepository;
 
 
+    @Transactional
     public Cozinha salvar(Cozinha cozinha){
         return cozinhaRepository.save(cozinha);
     }
@@ -26,6 +29,7 @@ public class CadastroCozinhaService {
     }
 
 
+    @Transactional
     public void excluir(Long id){
         try {
             cozinhaRepository.deleteById(id);

@@ -4,7 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time. OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,16 +27,16 @@ public class Pedido {
 
     @CreationTimestamp
     @Column(name = "dataCriacao" , nullable = false)
-    private LocalDateTime dataCriacao;
+    private  OffsetDateTime dataCriacao;
 
     @Column(name = "dataConfirmacao" , nullable = true)
-    private LocalDateTime dataConfirmacao;
+    private  OffsetDateTime dataConfirmacao;
 
     @Column(name = "dataCancelamento" , nullable = true)
-    private LocalDateTime dataCancelamento;
+    private  OffsetDateTime dataCancelamento;
 
     @Column(name = "dataEntraga" , nullable = true)
-    private LocalDateTime dataEntraga;
+    private  OffsetDateTime dataEntraga;
 
     @Column(name = "status", nullable = false, length = 10)
     private StatusPedido status;
@@ -92,35 +92,35 @@ public class Pedido {
         this.valorTotal = valorTotal;
     }
 
-    public LocalDateTime getDataCriacao() {
+    public  OffsetDateTime getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
+    public void setDataCriacao( OffsetDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
-    public LocalDateTime getDataConfirmacao() {
+    public  OffsetDateTime getDataConfirmacao() {
         return dataConfirmacao;
     }
 
-    public void setDataConfirmacao(LocalDateTime dataConfirmacao) {
+    public void setDataConfirmacao( OffsetDateTime dataConfirmacao) {
         this.dataConfirmacao = dataConfirmacao;
     }
 
-    public LocalDateTime getDataCancelamento() {
+    public  OffsetDateTime getDataCancelamento() {
         return dataCancelamento;
     }
 
-    public void setDataCancelamento(LocalDateTime dataCancelamento) {
+    public void setDataCancelamento( OffsetDateTime dataCancelamento) {
         this.dataCancelamento = dataCancelamento;
     }
 
-    public LocalDateTime getDataEntraga() {
+    public  OffsetDateTime getDataEntraga() {
         return dataEntraga;
     }
 
-    public void setDataEntraga(LocalDateTime dataEntraga) {
+    public void setDataEntraga( OffsetDateTime dataEntraga) {
         this.dataEntraga = dataEntraga;
     }
 

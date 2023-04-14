@@ -10,6 +10,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class CadastroRestauranteService {
 
@@ -26,7 +28,7 @@ public class CadastroRestauranteService {
     }
 
 
-
+    @Transactional
     public Restaurante salvar(Restaurante restaurante){
         Long cozinhaId = restaurante.getCozinha().getId();
         Cozinha cozinha = cadastroCozinha.buscarOuFalhar(cozinhaId);
@@ -36,7 +38,7 @@ public class CadastroRestauranteService {
         return restauranteRepository.save(restaurante);
     }
 
-
+    @Transactional
     public void excluir(Long id){
         try {
             restauranteRepository.deleteById(id);

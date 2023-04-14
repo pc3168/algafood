@@ -1,10 +1,9 @@
 package com.algworks.com.algafood.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +24,9 @@ public class Usuario {
     @Column(name = "senha", nullable = false)
     private String senha;
 
-    @JsonIgnore
     @CreationTimestamp
     @Column(name = "dataCadastro", nullable = false, columnDefinition = "datetime")
-    private LocalDateTime dataCadasatro;
+    private OffsetDateTime dataCadasatro;
 
     @ManyToMany
     @JoinTable(name = "usuario_grupo",
@@ -69,11 +67,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public LocalDateTime getDataCadasatro() {
+    public OffsetDateTime getDataCadasatro() {
         return dataCadasatro;
     }
 
-    public void setDataCadasatro(LocalDateTime dataCadasatro) {
+    public void setDataCadasatro(OffsetDateTime dataCadasatro) {
         this.dataCadasatro = dataCadasatro;
     }
 

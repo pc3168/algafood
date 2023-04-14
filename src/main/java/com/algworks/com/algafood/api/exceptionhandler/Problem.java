@@ -3,14 +3,14 @@ package com.algworks.com.algafood.api.exceptionhandler;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import java.time.LocalDateTime;
+import java.time. OffsetDateTime;
 import java.util.List;
 
 @JsonInclude(Include.NON_NULL)
 public class Problem {
 
     private Integer status;
-    private LocalDateTime timestamp;
+    private  OffsetDateTime timestamp;
     private String type;
     private String title;
     private String detail;
@@ -18,7 +18,7 @@ public class Problem {
     private List<Field> fields;
 
 
-    public Problem(Integer status, LocalDateTime timestamp, String type, String title, String detail, String userMessage, List<Field> fields) {
+    public Problem(Integer status,  OffsetDateTime timestamp, String type, String title, String detail, String userMessage, List<Field> fields) {
         this.status = status;
         this.timestamp = timestamp;
         this.type = type;
@@ -49,7 +49,7 @@ public class Problem {
         return userMessage;
     }
 
-    public LocalDateTime getTimestamp() {
+    public  OffsetDateTime getTimestamp() {
         return timestamp;
     }
 
@@ -73,7 +73,7 @@ public class Problem {
     static class ProblemBuilder{
 
         private Integer status;
-        private LocalDateTime timestamp;
+        private  OffsetDateTime timestamp;
         private String type;
         private String title;
         private String detail;
@@ -112,7 +112,7 @@ public class Problem {
             return this;
         }
 
-        public ProblemBuilder timestamp(LocalDateTime timestamp) {
+        public ProblemBuilder timestamp( OffsetDateTime timestamp) {
             this.timestamp = timestamp;
             return this;
         }
